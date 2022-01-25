@@ -1,6 +1,6 @@
 import hudson.tasks.junit.TestResultSummary
 
-def lastRunningStage; 
+String lastRunningStage; 
 
 pipeline {
   agent { label 'master' }
