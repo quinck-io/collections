@@ -1,29 +1,18 @@
-# README #
+# collections
+Allows extra operations on JavaScript collections: Array, Map and Set.
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Overview
+The operations are inspired from the Scala collection framework and aims to provider simple way to perform operations like collect using match cases.
 
-### What is this repository for? ###
+### Installation
+`npm i @quinck/collections`
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### Tests
+`npm run test`
 
-### How do I get set up? ###
+### Usage
+* Some examples of main features
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+### Contact
+* Quinck: info@quinck.io
+* Stefano Righini: stefano.righini@quinck.io
