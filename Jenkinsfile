@@ -120,8 +120,8 @@ def notifyDiscord(String buildStatus = 'SUCCESS', String lastRunningStage ="PRE-
   // subject = subject + "\n${testSummary}"
 
 
-  def completeSonarURL = "${SONAR_CLOUD_URL}&branch=${env.BRANCH_NAME}"
-  subject = subject + "\n\nSonar Result: ${completeSonarURL}"
+  // def completeSonarURL = "${SONAR_CLOUD_URL}&branch=${env.BRANCH_NAME}"
+  // subject = subject + "\n\nSonar Result: ${completeSonarURL}"
 
 
   def completeMessage;
