@@ -24,39 +24,38 @@ pipeline {
       }
     }
     
-    // stage("Lint") {
-    //   steps {
-    //       script {
-    //         lastRunningStage="Lint"
-    //       }
-    //       sh 'npm run lint'
-    //   }
-    // }
+    stage("Lint") {
+      steps {
+          script {
+            lastRunningStage="Lint"
+          }
+          sh 'npm run lint'
+      }
+    }
         
-    // stage("Test") {
-    //   steps {
-    //     script {
-    //       lastRunningStage="Test"
-    //     }
-    //     sh 'npm run test'
-    //   }
-    // }
+    stage("Test") {
+      steps {
+        script {
+          lastRunningStage="Test"
+        }
+        sh 'npm run test'
+      }
+    }
 
-    // stage("Build") {
-    //   when {
-    //     anyOf {
-    //       branch 'develop';
-    //       branch 'master'
-    //     }
-    //   }
-    //   steps {
-    //     script {
-    //       lastRunningStage = 'Build'
-    //       String commitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
-    //     }
-    //     sh 'npm run build'
-    //   }
-    // }
+    stage("Build") {
+      when {
+        anyOf {
+          branch 'develop';
+          branch 'master'
+        }
+      }
+      steps {
+        script {
+          lastRunningStage = 'Build'
+        }
+        sh 'npm run build'
+      }
+    }
   }
 
   post {
