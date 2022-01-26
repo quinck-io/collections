@@ -13,7 +13,8 @@
     "prepublishOnly" : "npm test && npm run lint",
     "preversion" : "npm run lint",
     "version" : "git add -A src",
-    "postversion" : "git push && git push --tags"
+    "postversion" : "git push && npm run git-tag && git push --tags",
+    "git-tag": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION"
   },
   "repository": {
     "type": "git",
