@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "lint": "eslint src/ __test__/",
-    "lint:fix": "eslint src/ __test__/ --fix",
+    "lint": "eslint src/ __tests__/",
+    "lint:fix": "eslint src/ __tests__/ --fix",
     "build": "tsc",
     "test": "jest --config jestconfig.json",
     "prepare" : "npm run build",
