@@ -19,6 +19,7 @@
   "homepage": "https://bitbucket.org/Quinck/collections#readme",
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
+    "@types/node": "^17.0.12",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "eslint": "^8.7.0",

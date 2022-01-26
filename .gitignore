@@ -943,3 +943,5 @@ $RECYCLE.BIN/
 *.mov
 *.wmv
 
+# TypeScript
+lib/
