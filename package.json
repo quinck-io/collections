@@ -1,6 +1,6 @@
 {
   "name": "@quinck/collections",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Allows extra operations on JavaScript collections: Array, Map and Set.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,18 +9,23 @@
     "lint:fix": "eslint src/ __tests__/ --fix",
     "build": "tsc",
     "test": "jest --config jestconfig.json",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm test && npm run lint",
-    "preversion" : "npm run lint",
-    "version" : "git add -A src",
-    "postversion" : "git push && npm run git-tag && git push --tags",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && npm run git-tag && git push --tags",
     "git-tag": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION"
   },
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/Quinck/collections.git"
   },
-  "keywords": ["Collection","Array","Set","Map"],
+  "keywords": [
+    "Collection",
+    "Array",
+    "Set",
+    "Map"
+  ],
   "author": "Quinck s.r.l.",
   "license": "ISC",
   "homepage": "https://bitbucket.org/Quinck/collections#readme",
