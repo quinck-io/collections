@@ -1,1 +1,1 @@
-import './arrays'
+import './arrays/arrays'
