@@ -11,7 +11,7 @@ declare global {
      * @param mergeFunction unify two items into a unique items with the same key
      * @returns a map with the elements grouped by the keys generated using the keyMapper
      */
-    groupby<K,V>(keyMapper: Mapper<T,K>, valueMapper: Mapper<T,V>, mergeFunction?: GroupByMergeFunction<V>): Map<K,V>
+    groupBy<K,V>(keyMapper: Mapper<T,K>, valueMapper: Mapper<T,V>, mergeFunction?: GroupByMergeFunction<V>): Map<K,V>
     /**
      * Perform a group by operation grouping by the result of the keyMapper.
      * @param keyMapper used to get the key
@@ -19,7 +19,7 @@ declare global {
      * @param mergeFunction unify two items into a unique items with the same key
      * @returns an object with the elements grouped by the keys generated using the keyMapper
      */
-    groupbyToDictionary<K extends string,V>(keyMapper: Mapper<T,K>, valueMapper: Mapper<T,V>, mergeFunction?: GroupByMergeFunction<V>): Record<K,V>
+    groupByToDictionary<K extends string,V>(keyMapper: Mapper<T,K>, valueMapper: Mapper<T,V>, mergeFunction?: GroupByMergeFunction<V>): Record<K,V>
     /**
      * Perform a group by operation grouping by the result of the keyMapper.
      * As the simplified version of a groupby this method only allows to 
@@ -28,7 +28,7 @@ declare global {
      * @param keyMapper used to get the key
      * @returns a map with the elements grouped by the keys generated using the keyMapper
      */
-    simpleGroupby<K>(keyMapper: Mapper<T,K>): Map<K,T[]>
+    simpleGroupBy<K>(keyMapper: Mapper<T,K>): Map<K,T[]>
     /**
      * Perform a group by operation grouping by the result of the keyMapper.
      * As the simplified version of a groupby this method only allows to 
@@ -37,11 +37,11 @@ declare global {
      * @param keyMapper used to get the key
      * @returns a map with the elements grouped by the keys generated using the keyMapper
      */
-     simpleGroupbyToDictionary<K extends string>(keyMapper: Mapper<T,K>): Record<K,T[]>
+     simpleGroupByToDictionary<K extends string>(keyMapper: Mapper<T,K>): Record<K,T[]>
   }
 }
 
-Array.prototype.groupby = function <K,V>(
+Array.prototype.groupBy = function <K,V>(
     keyMapper: Mapper<unknown,K>,
     valueMapper: Mapper<unknown,V>,
     mergeFunction: GroupByMergeFunction<V> = (_,b) => b
@@ -56,7 +56,7 @@ Array.prototype.groupby = function <K,V>(
     },new Map<K,V>())
 }
 
-Array.prototype.groupbyToDictionary = function <K extends string,V>(
+Array.prototype.groupByToDictionary = function <K extends string,V>(
     keyMapper: Mapper<unknown,K>,
     valueMapper: Mapper<unknown,V>,
     mergeFunction: GroupByMergeFunction<V> = (_,b) => b
@@ -71,16 +71,16 @@ Array.prototype.groupbyToDictionary = function <K extends string,V>(
     },{} as Record<K,V>)
 }
 
-Array.prototype.simpleGroupby = function <K>(
+Array.prototype.simpleGroupBy = function <K>(
     keyMapper: Mapper<unknown,K>
 ): Map<K,unknown[]> {
     const _self = this as Array<unknown>
-    return _self.groupby(keyMapper, v => [v], (a,b) => a.concat(b))
+    return _self.groupBy(keyMapper, v => [v], (a,b) => a.concat(b))
 }
 
-Array.prototype.simpleGroupbyToDictionary = function <K extends string>(
+Array.prototype.simpleGroupByToDictionary = function <K extends string>(
     keyMapper: Mapper<unknown,K>
 ): Record<K,unknown[]> {
     const _self = this as Array<unknown>
-    return _self.groupbyToDictionary(keyMapper, v => [v], (a,b) => a.concat(b))
+    return _self.groupByToDictionary(keyMapper, v => [v], (a,b) => a.concat(b))
 }
