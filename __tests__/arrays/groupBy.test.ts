@@ -1,5 +1,5 @@
 import '../../src/arrays/arrays'
-import {FoodCategory, foods, fruits} from './groupBy.utils'
+import {FoodCategory, foods, fruits} from './utils'
 
 describe('Tests for Array.groupBy', () => {
 
