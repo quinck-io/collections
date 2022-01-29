@@ -1,56 +1,56 @@
-import '../../src/arrays/arrays'
-import {FoodCategory, foods, fruits} from './utils'
+// import '../../src/arrays/arrays'
+// import {FoodCategory, foods, fruits} from './utils'
 
-describe('Tests for Array.groupBy', () => {
+// describe('Tests for Array.groupBy', () => {
 
-    test('should return a Map', () => {
-        const foodsByCategory = foods.groupBy(
-            ({category}) => category,
-            ({foodName}) => [foodName],
-            (a,b) => a.concat(b)
-        )
+//     test('should return a Map', () => {
+//         const foodsByCategory = foods.groupBy(
+//             ({category}) => category,
+//             ({foodName}) => [foodName],
+//             (a,b) => a.concat(b)
+//         )
 
-        expect(foodsByCategory).toBeInstanceOf(Map)
-    })
+//         expect(foodsByCategory).toBeInstanceOf(Map)
+//     })
 
-    test('should return the results with the correct keys', () => {
+//     test('should return the results with the correct keys', () => {
 
-        const foodsByCategory = foods.groupBy(
-            ({category}) => category,
-            ({foodName}) => [foodName],
-            (a,b) => a.concat(b)
-        )
+//         const foodsByCategory = foods.groupBy(
+//             ({category}) => category,
+//             ({foodName}) => [foodName],
+//             (a,b) => a.concat(b)
+//         )
 
-        expect(foodsByCategory.has(FoodCategory.FRUITS)).toBe(true)
-        expect(foodsByCategory.has(FoodCategory.VEGETABLES)).toBe(true)
-    })
+//         expect(foodsByCategory.has(FoodCategory.FRUITS)).toBe(true)
+//         expect(foodsByCategory.has(FoodCategory.VEGETABLES)).toBe(true)
+//     })
 
-    test('should return the results with the correct values', () => {
+//     test('should return the results with the correct values', () => {
 
-        const foodsByCategory = foods.groupBy(
-            ({category}) => category,
-            ({foodName}) => [foodName],
-            (a,b) => a.concat(b)
-        )
+//         const foodsByCategory = foods.groupBy(
+//             ({category}) => category,
+//             ({foodName}) => [foodName],
+//             (a,b) => a.concat(b)
+//         )
 
-        const groupedFruits = foodsByCategory.get(FoodCategory.FRUITS)
-        expect(groupedFruits).not.toBeNull()
-        expect(groupedFruits).not.toBeUndefined()
-        expect(groupedFruits).toBeInstanceOf(Array)
-        fruits.forEach(({foodName}) => expect(groupedFruits).toContain(foodName))
+//         const groupedFruits = foodsByCategory.get(FoodCategory.FRUITS)
+//         expect(groupedFruits).not.toBeNull()
+//         expect(groupedFruits).not.toBeUndefined()
+//         expect(groupedFruits).toBeInstanceOf(Array)
+//         fruits.forEach(({foodName}) => expect(groupedFruits).toContain(foodName))
     
-    })
+//     })
 
-    test('should not add additional keys', () => {
+//     test('should not add additional keys', () => {
 
-        const foodsByCategory = fruits.groupBy(
-            ({category}) => category,
-            ({foodName}) => [foodName],
-            (a,b) => a.concat(b)
-        )
+//         const foodsByCategory = fruits.groupBy(
+//             ({category}) => category,
+//             ({foodName}) => [foodName],
+//             (a,b) => a.concat(b)
+//         )
 
-        expect(foodsByCategory.has(FoodCategory.VEGETABLES)).toBe(false)
+//         expect(foodsByCategory.has(FoodCategory.VEGETABLES)).toBe(false)
     
-    })
+//     })
 
-})
+// })
