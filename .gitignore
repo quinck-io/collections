@@ -945,3 +945,6 @@ $RECYCLE.BIN/
 
 # TypeScript
 lib/
+
+# Test results
+test-results.xml
