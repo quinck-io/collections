@@ -7,5 +7,6 @@
     "modulePaths": [
       "<rootDir>"
     ],
-    "verbose": true
+    "verbose": true,
+    "resolver": "jest-node-exports-resolver"
 }
