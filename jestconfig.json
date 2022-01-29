@@ -6,5 +6,8 @@
     "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
     "moduleDirectories": [
       "<rootDir>"
+    ],
+    "modulePaths": [
+      "<rootDir>"
     ]
 }
