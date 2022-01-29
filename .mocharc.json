@@ -1,5 +1,5 @@
 {
     "require": "ts-node/register",
     "reporter": "mocha-junit-reporter",
-    "spec": "__tests__/**/*.ts"
+    "spec": "test/**/*.ts"
 }
