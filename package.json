@@ -9,6 +9,7 @@
     "lint:fix": "eslint src/ __tests__/ --fix",
     "build": "tsc",
     "test": "mocha",
+    "test:junitReporter": "mocha --reporter mocha-junit-reporter",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
