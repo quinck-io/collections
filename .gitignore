@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/osx,node,test,linux,windows,webstorm,intellij,testinfra,jetbrains,testcomplete,webstorm+iml,webstorm+all,intellij+iml,intellij+all,jetbrains+all,jetbrains+iml,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=osx,node,test,linux,windows,webstorm,intellij,testinfra,jetbrains,testcomplete,webstorm+iml,webstorm+all,intellij+iml,intellij+all,jetbrains+all,jetbrains+iml,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/osx,node,linux,windows,webstorm,intellij,jetbrains,webstorm+iml,webstorm+all,intellij+iml,intellij+all,jetbrains+all,jetbrains+iml,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=osx,node,linux,windows,webstorm,intellij,jetbrains,webstorm+iml,webstorm+all,intellij+iml,intellij+all,jetbrains+all,jetbrains+iml,visualstudiocode
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -597,106 +597,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### Test ###
-### Ignore all files that could be used to test your code and
-### you wouldn't want to push
-
-# Reference https://en.wikipedia.org/wiki/Metasyntactic_variable
-
-# Most common
-*foo
-*bar
-*fubar
-*foobar
-*baz
-
-# Less common
-*qux
-*quux
-*bongo
-*bazola
-*ztesch
-
-# UK, Australia
-*wibble
-*wobble
-*wubble
-*flob
-*blep
-*blah
-*boop
-*beep
-
-# Japanese
-*hoge
-*piyo
-*fuga
-*hogera
-*hogehoge
-
-# Portugal, Spain
-*fulano
-*sicrano
-*beltrano
-*mengano
-*perengano
-*zutano
-
-# France, Italy, the Netherlands
-*toto
-*titi
-*tata
-*tutu
-*pipppo
-*pluto
-*paperino
-*aap
-*noot
-*mies
-
-# Other names that would make sense
-*tests
-*testsdir
-*testsfile
-*testsfiles
-*test
-*testdir
-*testfile
-*testfiles
-*testing
-*testingdir
-*testingfile
-*testingfiles
-*temp
-*tempdir
-*tempfile
-*tempfiles
-*tmp
-*tmpdir
-*tmpfile
-*tmpfiles
-*lol
-
-### TestComplete ###
-# Test Complete ignore files: https://support.smartbear.com/viewarticle/68002/
-
-# Tester-specific Settings
-*.tcCFGExtender
-*.tcLS
-
-# Type library declarations
-*.tlb
-
-# Log files
-*.tcLogs
-
-# Backup files
-*.bak
-
-### Testinfra ###
-__pycache__/
-.pytest_cache/
-
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -928,7 +828,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/osx,node,test,linux,windows,webstorm,intellij,testinfra,jetbrains,testcomplete,webstorm+iml,webstorm+all,intellij+iml,intellij+all,jetbrains+all,jetbrains+iml,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/osx,node,linux,windows,webstorm,intellij,jetbrains,webstorm+iml,webstorm+all,intellij+iml,intellij+all,jetbrains+all,jetbrains+iml,visualstudiocode
 
 # Applications
 *.app
