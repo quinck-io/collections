@@ -5,12 +5,7 @@
     "testRegex": "__tests__.*test\\.(jsx?|tsx?)$",
     "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
     "moduleDirectories": [
-      "<rootDir>",
-      "<rootDir>/node_modules"
-    ],
-    "modulePaths": [
-      "<rootDir>",
-      "<rootDir>/node_modules"
+      "<rootDir>"
     ],
     "verbose": true
 }
