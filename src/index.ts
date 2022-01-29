@@ -1,1 +1,1 @@
-import './arrays/arrays'
+import './arrays/groupBy'

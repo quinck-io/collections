@@ -1,6 +1,6 @@
-import { GroupByMergeFunction, Mapper } from './models'
+import { Mapper } from './models'
 
-export { }
+export type GroupByMergeFunction<V> = (a: V, b: V) => V
 
 declare global {
   interface Array<T> {
