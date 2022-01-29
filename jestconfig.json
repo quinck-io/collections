@@ -8,5 +8,9 @@
       "<rootDir>",
       "<rootDir>/node_modules"
     ],
+    "modulePaths": [
+      "<rootDir>",
+      "<rootDir>/node_modules"
+    ],
     "verbose": true
 }
