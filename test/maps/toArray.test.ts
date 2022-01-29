@@ -63,3 +63,33 @@ describe('Tests for Map.keysArray', () => {
     })
 
 })
+
+
+describe('Tests for Map.valuesArray', () => {
+
+    it('should return an Array', () => {
+        const elements = exampleMap.valuesArray()
+
+        expect(elements).to.be.instanceOf(Array)
+    })
+
+    it('should contain a number of elements equals to the size of the original Map', () => {
+
+        const elements = exampleMap.valuesArray()
+
+        expect(elements.length).to.be.equal(exampleMap.size)
+
+    })
+
+    it('should contains all the values of the original Map', () => {
+
+        const elements = exampleMap.valuesArray()
+        const originalValues = exampleMap.values()
+
+        for (const originalValue of originalValues) {
+            expect(elements).to.deep.contain(originalValue)
+        }
+    
+    })
+
+})
