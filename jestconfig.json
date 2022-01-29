@@ -4,9 +4,10 @@
     },
     "testRegex": "__tests__.*test\\.(jsx?|tsx?)$",
     "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
-    "modulePaths": [
-      "<rootDir>"
+    "moduleDirectories": [
+      "<rootDir>",
+      "node_modules",
+      "src"
     ],
-    "verbose": true,
-    "resolver": "jest-node-exports-resolver"
+    "verbose": true
 }
