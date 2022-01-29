@@ -32,7 +32,7 @@ Array.prototype.collect = function <T,NewType>(
     if (otherwiseMapper)
         return _self.map(item => filter(item) ? matchedMapper(item) : otherwiseMapper(item))
     
-    return _self.flatMap(x => filter(x) ? matchedMapper(x) : [])
+    return _self.flatMap(item => filter(item) ? matchedMapper(item) : [])
 }
 
 Array.prototype.multipleCollect = function <T,NewType>(
