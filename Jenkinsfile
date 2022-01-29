@@ -91,8 +91,8 @@ pipeline {
   post {
     always {
       script {
-        // def testResult = junit "test-results.xml"
-        notifyDiscord(currentBuild.result, lastRunningStage)
+        def testResult = junit "test-results.xml"
+        notifyDiscord(currentBuild.result, lastRunningStage, testResult)
         deleteDir() /* clean up our workspace */
         }
     }
@@ -105,8 +105,8 @@ pipeline {
   }
 }
 
-// def notifyDiscord(String buildStatus = 'SUCCESS', String lastRunningStage ="PRE-BUILD", TestResultSummary testResult) {
-def notifyDiscord(String buildStatus = 'SUCCESS', String lastRunningStage ="PRE-BUILD") {
+def notifyDiscord(String buildStatus = 'SUCCESS', String lastRunningStage ="PRE-BUILD", TestResultSummary testResult) {
+// def notifyDiscord(String buildStatus = 'SUCCESS', String lastRunningStage ="PRE-BUILD") {
   
   def statusIcon;
 
@@ -146,7 +146,7 @@ def notifyDiscord(String buildStatus = 'SUCCESS', String lastRunningStage ="PRE-
     subject = subject + "\n> Failed in stage: *${lastRunningStage}*"
   }
 
-  // subject = subject + "\n${testSummary}"
+  subject = subject + "\n${testSummary}"
 
 
   // def completeSonarURL = "${SONAR_CLOUD_URL}&branch=${env.BRANCH_NAME}"
