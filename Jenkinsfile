@@ -38,7 +38,6 @@ pipeline {
         script {
           lastRunningStage="Test"
         }
-        sh 'ls'
         sh 'npm run test'
       }
     }
