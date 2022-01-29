@@ -38,7 +38,7 @@ pipeline {
         script {
           lastRunningStage="Test"
         }
-        sh 'npm run test'
+        sh 'npm run test:junitReporter'
       }
     }
 
