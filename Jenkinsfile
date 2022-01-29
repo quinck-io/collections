@@ -126,7 +126,7 @@ def notifyDiscord(String buildStatus = 'SUCCESS', String lastRunningStage ="PRE-
   def title = "${env.JOB_NAME} Build: ${env.BUILD_NUMBER}"
   def title_link = "${env.RUN_DISPLAY_URL}"
 
-  // def testSummary = "\n *Test Summary* - ${testResult.totalCount}, Failures: ${testResult.failCount}, Skipped: ${testResult.skipCount}, Passed: ${testResult.passCount}\n\nTest link: ${env.RUN_TESTS_DISPLAY_URL}"
+  def testSummary = "\n *Test Summary* - ${testResult.totalCount}, Failures: ${testResult.failCount}, Skipped: ${testResult.skipCount}, Passed: ${testResult.passCount}\n\nTest link: ${env.RUN_TESTS_DISPLAY_URL}"
 
   def author = sh(returnStdout: true, script: "git --no-pager show -s --format='%an'").trim()
 
