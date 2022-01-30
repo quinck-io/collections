@@ -69,7 +69,6 @@ pipeline {
           withCredentials([string(credentialsId: 'quinck-npm-token', variable: 'NPM_TOKEN')]) {
             sh '''
               set +x
-              echo $NPM_TOKEN
               echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
               npm whoami
               
@@ -79,6 +78,7 @@ pipeline {
                 echo "The current package version has already been published"
               else
                 echo "Do pubblication"
+                npm publish --access public
               fi
               
               rm .npmrc
