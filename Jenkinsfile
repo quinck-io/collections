@@ -81,7 +81,7 @@ pipeline {
                 echo "Do pubblication"
               fi
               
-              sh 'rm .npmrc'
+              rm .npmrc
             '''
           }
         }
