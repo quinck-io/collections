@@ -69,8 +69,8 @@ pipeline {
           withCredentials([string(credentialsId: 'quinck-npm-token', variable: 'NPM_TOKEN')]) {
             sh '''
               set +x
-              echo $TOKEN
-              echo "//registry.npmjs.org/:_authToken=${TOKEN}" > .npmrc
+              echo $NPM_TOKEN
+              echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
               npm whoami
               
               PUBLISHED_VERSION=$(npm show @quinck/collections version)
