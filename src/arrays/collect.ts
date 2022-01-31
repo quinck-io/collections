@@ -11,19 +11,19 @@ declare global {
      * @param otherwiseMapper if specified mpas the items that does not satisfy the filter, if not specified these items will be discarded
      * @returns a new Array with the resulting items
      */
-    collect<NewType>(filter: Filter<T>, matchedMapper: Mapper<T,NewType>, otherwiseMapper?: Mapper<T,NewType>): Array<NewType>
+    singleCollect<NewType>(filter: Filter<T>, matchedMapper: Mapper<T,NewType>, otherwiseMapper?: Mapper<T,NewType>): Array<NewType>
 
     /**
      * Perform filter and map operations in a unique one accepting multiple filter cases.
      * @param matchCases if a condition is satisfied the associeted mapping function is applied, if no condition is satisfied the element will be discarded
      * @returns a new RichArray with the resulting items
      */
-    multipleCollect<NewType>(matchCases: Case<T,NewType>[], otherwiseMapper?: Mapper<T,NewType>): Array<NewType>
+    collect<NewType>(matchCases: Case<T,NewType>[], otherwiseMapper?: Mapper<T,NewType>): Array<NewType>
   }
 }
 
 
-Array.prototype.collect = function <T,NewType>(
+Array.prototype.singleCollect = function <T,NewType>(
     filter: Filter<T>,
     matchedMapper: Mapper<T,NewType>,
     otherwiseMapper?: Mapper<T,NewType>
@@ -35,7 +35,7 @@ Array.prototype.collect = function <T,NewType>(
     return _self.flatMap(item => filter(item) ? matchedMapper(item) : [])
 }
 
-Array.prototype.multipleCollect = function <T,NewType>(
+Array.prototype.collect = function <T,NewType>(
     matchCases: Case<T,NewType>[],
     otherwiseMapper?: Mapper<T,NewType>
 ): Array<NewType> {

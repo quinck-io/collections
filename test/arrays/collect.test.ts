@@ -3,12 +3,12 @@ import '../../src/arrays/collect'
 import {defaultPrice, FoodCategory, foods, FoodWithPrice, fruitPrice, fruits, vegetablePrice, vegetables} from './utils'
 import { expect } from 'chai'
 
-describe('Tests for Array.collect', () => {
+describe('Tests for Array.singleCollect', () => {
 
     describe('When otherwiseMapper is not specified', () => {
 
         it('should return an Array', () => {
-            const collectedFruits = foods.collect(
+            const collectedFruits = foods.singleCollect(
                 ({category}) => category === FoodCategory.FRUITS,
                 ({foodName}) => foodName
             )
@@ -18,7 +18,7 @@ describe('Tests for Array.collect', () => {
     
         it('should return the correct values', () => {
     
-            const collectedFruits = foods.collect(
+            const collectedFruits = foods.singleCollect(
                 ({category}) => category === FoodCategory.FRUITS,
                 ({foodName}) => foodName
             )
@@ -29,7 +29,7 @@ describe('Tests for Array.collect', () => {
     
         it('should not add accept values that does not satisfy the specified filter', () => {
     
-            const collectedFruits = foods.collect(
+            const collectedFruits = foods.singleCollect(
                 ({category}) => category === FoodCategory.FRUITS,
                 ({foodName}) => foodName
             )
@@ -43,7 +43,7 @@ describe('Tests for Array.collect', () => {
     describe('When otherwiseMapper is specified', () => {
 
         it('should return an Array', () => {
-            const collectedFoods = foods.collect<FoodWithPrice>(
+            const collectedFoods = foods.singleCollect<FoodWithPrice>(
                 ({category}) => category === FoodCategory.FRUITS,
                 food => ({...food, price: fruitPrice}),
                 food => ({...food, price: defaultPrice}),
@@ -54,7 +54,7 @@ describe('Tests for Array.collect', () => {
     
         it('should return the correct values', () => {
     
-            const collectedFoods = foods.collect<FoodWithPrice>(
+            const collectedFoods = foods.singleCollect<FoodWithPrice>(
                 ({category}) => category === FoodCategory.FRUITS,
                 food => ({...food, price: fruitPrice}),
                 food => ({...food, price: defaultPrice}),
@@ -68,7 +68,7 @@ describe('Tests for Array.collect', () => {
 
         it('should return both matched and other values correctly', () => {
     
-            const collectedFoods = foods.collect<FoodWithPrice>(
+            const collectedFoods = foods.singleCollect<FoodWithPrice>(
                 ({category}) => category === FoodCategory.FRUITS,
                 food => ({...food, price: fruitPrice}),
                 food => ({...food, price: defaultPrice}),
@@ -88,12 +88,12 @@ describe('Tests for Array.collect', () => {
 })
 
 
-describe('Tests for Array.multipleCollect', () => {
+describe('Tests for Array.collect', () => {
 
     describe('When otherwiseMapper is not specified', () => {
 
         it('should return an Array', () => {
-            const collectedFoods = foods.multipleCollect<FoodWithPrice>([
+            const collectedFoods = foods.collect<FoodWithPrice>([
                 [({category}) => category === FoodCategory.FRUITS, food => ({...food, price: fruitPrice})],
                 [({category}) => category === FoodCategory.VEGETABLES, food => ({...food, price: vegetablePrice})]
             ])
@@ -103,7 +103,7 @@ describe('Tests for Array.multipleCollect', () => {
     
         it('should return the correct values', () => {
     
-            const collectedFoods = foods.multipleCollect<FoodWithPrice>([
+            const collectedFoods = foods.collect<FoodWithPrice>([
                 [({category}) => category === FoodCategory.FRUITS, food => ({...food, price: fruitPrice})],
                 [({category}) => category === FoodCategory.VEGETABLES, food => ({...food, price: vegetablePrice})]
             ])
@@ -118,7 +118,7 @@ describe('Tests for Array.multipleCollect', () => {
     
         it('should not add accept values that does not satisfy the specified filter', () => {
     
-            const collectedFoods = foods.multipleCollect<FoodWithPrice>([
+            const collectedFoods = foods.collect<FoodWithPrice>([
                 [({category}) => category === FoodCategory.FRUITS, food => ({...food, price: fruitPrice})]
             ])
 
@@ -132,7 +132,7 @@ describe('Tests for Array.multipleCollect', () => {
 
         it('should return an Array', () => {
 
-            const collectedFoods = foods.multipleCollect<FoodWithPrice>(
+            const collectedFoods = foods.collect<FoodWithPrice>(
                 [
                     [({category}) => category === FoodCategory.FRUITS, food => ({...food, price: fruitPrice})],
                     [({category}) => category === FoodCategory.VEGETABLES, food => ({...food, price: vegetablePrice})]
@@ -145,7 +145,7 @@ describe('Tests for Array.multipleCollect', () => {
     
         it('should return all the values of the previus array', () => {
     
-            const collectedFoods = foods.multipleCollect<FoodWithPrice>(
+            const collectedFoods = foods.collect<FoodWithPrice>(
                 [
                     [({category}) => category === FoodCategory.FRUITS, food => ({...food, price: fruitPrice})],
                     [({category}) => category === FoodCategory.VEGETABLES, food => ({...food, price: vegetablePrice})]
@@ -160,7 +160,7 @@ describe('Tests for Array.multipleCollect', () => {
 
         it('should return both matched and other values correctly', () => {
     
-            const collectedFoods = foods.multipleCollect<FoodWithPrice>(
+            const collectedFoods = foods.collect<FoodWithPrice>(
                 [
                     [({category}) => category === FoodCategory.FRUITS, food => ({...food, price: fruitPrice})],
                     [({category}) => category === FoodCategory.VEGETABLES, food => ({...food, price: vegetablePrice})]
