@@ -19,8 +19,8 @@ In this section will be presented the implemented operations.
 | `Array` | `groupByToDictionary` | Similar to the `groupBy`, but instead of a Map this will create an object. The created object will have as keys all the different keys generated. |
 | `Array` | `simpleGroupBy` | Simplified version of the `groupBy`, this operation will not allow to specify a mapper function for the values. In this case for each key will be generated and `Array` of values referring to that key. |
 | `Array` | `simpleGroupByToDictionary` | Simplified version of the `groupByToDictionary`, this operation will not allow to specify a mapper function for the values. In this case for each key will be generated and `Array` of values referring to that key. |
-| `Array` | `collect` | This operation tries to perform the `collect` operation of the Scala collection framework. It performs `Array.filter` and `Array.map` operations in a single operation (browsing the elements of the array once). It allow to specify a filter and a mapper function. The elements that match the filter will be kept and the others will be discarded. Moreover as in Scala also here is possible to specify the default case that will take care of the elements that didn't matched the filter. |
-| `Array` | `multipleCollect` | This operation extends the `collect`. The collect only allows to specify a single `MatchCase` (defining `MatchCase` as a pair of filter and mapper). As in Scala is possible to use the `match` construct, the `multipleCollet` allows to specify an ordered `Array` of `MatchCase`. Starting from the first to the last `MatchCase`, if an element of the `Array` satisfy the filter the relative mapper will be applied. As in Scala only the first successful case will be cosidered. Moreover as in the `collect` is possible to specify the default case specifying teh relative mapper. |
+| `Array` | `collect` |  It performs `Array.filter` and `Array.map` operations in a single operation (browsing the elements of the array once). It allow to specify a filter and a mapper function. The elements that match the filter will be kept and the others will be discarded. Moreover as in Scala also here is possible to specify the default case that will take care of the elements that didn't matched the filter. |
+| `Array` | `collect` | This operation tries to perform the `collect` operation of the Scala collection framework. As in Scala is possible to use the `match` construct, infact the `collect` allows to specify an ordered `Array` of `MatchCase`. Starting from the first to the last `MatchCase`, if an element of the `Array` satisfy the filter the relative mapper will be applied. As in Scala only the first successful case will be cosidered. Moreover as in the `collect` is possible to specify the default case specifying teh relative mapper. |
 | `Map` | `toArray` | `Map` objects in JavaScript (or Typescript) are not really 'array-friendly'. In fact in order to obtain an `Array` having a `Map` you have to get all the entries, using `map.entries()`, and then creating an `Array` (i.e. using `Array.from`). This way does not allow to have a fluent code, so in order to achieve this the additional method `Map.toArray` transform a `Map` in an `Array` where each element is a pair of a key and the relative value. Doing this way is possible to have a fluent code.|
 | `Map` | `keysArray` | Allow to get the keys of a `Map` in an `Array` in a fluent way.|
 | `Map` | `valuesArray` | Allow to get the values of a `Map` in an `Array` in a fluent way.|
@@ -31,7 +31,7 @@ In this section will be showed some examples.
 ### Array
 
 #### GroupBy
-```[javascript]
+```js
 const students = [
     {
         studentClass = "A",
@@ -89,7 +89,7 @@ B => {
 
 ```
 #### Collect
-```[javascript]
+```js
 const students = [
     {
         studentClass = "A",
@@ -125,7 +125,7 @@ const students = [
 
 /* Lets the students names of the class A */
 
-const classAStudentsNames = students.collect(
+const classAStudentsNames = students.singleCollect(
     ({studentClass}) => studentClass === "A",
     ({studentName}) => studentName
 )
@@ -141,7 +141,7 @@ pass students with a grade greater than or equals to 6
 fail other students
 */
 
-const studentsWithStatus = students.multipleCollect([
+const studentsWithStatus = students.collect([
     [
         ({studentGrade}) => studentGrade === 10,
         student => ({...student, status: "scholarship"})
@@ -183,7 +183,7 @@ studentsWithStatus will be:
 ### Map
 
 #### toArray
-```[javascript]
+```js
 const map = new Map([1,10],[2,20],[3,30])
 
 const result = map.toArray() /* [[1,10],[2,20],[3,30]] */
@@ -191,7 +191,7 @@ const result = map.toArray() /* [[1,10],[2,20],[3,30]] */
 ```
 
 ### Mixing
-```[javascript]
+```js
 const map = new Map([1,10],[2,20],[3,30])
 
 const result = map.toArray() /* [[1,10],[2,20],[3,30]] */
