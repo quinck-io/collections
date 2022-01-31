@@ -1,4 +1,5 @@
 import './arrays/groupBy'
 import './arrays/collect'
+import './arrays/toSet'
 import './maps/toArray'
 import './sets/toArray'
