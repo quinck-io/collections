@@ -69,8 +69,8 @@ pipeline {
           withCredentials([string(credentialsId: 'quinck-npm-token', variable: 'NPM_TOKEN')]) {
             sh '''
               set +x
-              sh 'echo "//registry.npmjs.org/:_authToken=${TOKEN}" >> .npmrc'
-              sh 'npm whoami'
+              echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+              npm whoami
               
               PUBLISHED_VERSION=$(npm show @quinck/collections version)
               PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
@@ -78,9 +78,10 @@ pipeline {
                 echo "The current package version has already been published"
               else
                 echo "Do pubblication"
+                npm publish --access public
               fi
               
-              sh 'rm .npmrc'
+              rm .npmrc
             '''
           }
         }
