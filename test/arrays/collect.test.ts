@@ -5,6 +5,22 @@ import { expect } from 'chai'
 
 describe('Tests for Array.singleCollect', () => {
 
+    describe('when operating with multi levels arrays', () => {
+
+        it('should not flat the second level array if not specified in the mapperFunction', () => {
+            const input: string[][] = [
+                ['a','b','c'],
+                ['d','e','f']
+            ]
+            const result = input.singleCollect(
+                ([first]) => first === 'a',
+                item => item
+            )
+            expect(result).to.be.deep.equal([['a','b','c']])
+        })
+        
+    })
+
     describe('When otherwiseMapper is not specified', () => {
 
         it('should return an Array', () => {
