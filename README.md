@@ -195,7 +195,7 @@ const result = map.toArray() /* [[1,10],[2,20],[3,30]] */
 const map = new Map([1,10],[2,20],[3,30])
 
 const result = map.toArray() /* [[1,10],[2,20],[3,30]] */
-    .collect(
+    .singleCollect(
         ([key]) => key > 2,
         ([,value]) => [value],
         (a,b) => a.concat(b)
