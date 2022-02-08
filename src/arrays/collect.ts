@@ -41,11 +41,23 @@ Array.prototype.collect = function <T,NewType>(
 ): Array<NewType> {
     const _self = this as Array<T>
 
-    const otherwiseFunction = otherwiseMapper || (() => [])
-    const otherwiseCase: Case<T,NewType|never[]> = [() => true, otherwiseFunction]
+    if (otherwiseMapper) {
+        return _self.map(item => {
+            const matchingCase = matchCases.find(([filter]) => filter(item))
+            if (matchingCase != undefined) {
+                const [,matchedMapper] = matchingCase
+                return matchedMapper(item)
+            }
+            return otherwiseMapper(item)
+        })
+    }
 
     return _self.flatMap(item => {
-        const [,matchedMapper] = matchCases.find(([filter]) => filter(item)) || otherwiseCase
-        return matchedMapper(item)
+        const matchingCase = matchCases.find(([filter]) => filter(item))
+        if (matchingCase != undefined) {
+            const [,matchedMapper] = matchingCase
+            return [matchedMapper(item)]
+        }
+        return []
     })
 }
