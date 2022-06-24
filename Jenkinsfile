@@ -5,6 +5,10 @@ String lastRunningStage;
 pipeline {
   agent { label 'master' }
 
+  tools {
+    nodejs "nodejs14.19"
+  }
+
   options {
     disableConcurrentBuilds()
   }
