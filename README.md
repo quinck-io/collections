@@ -2,7 +2,7 @@
 Allows extra operations on JavaScript collections: Array, Map and Set.
 
 ## Overview
-The operations are inspired from the Scala collection framework and aims to provide a simple way to perform operations like collect using match cases.
+The operations are inspired from the Scala collection framework and aims to provide a simple way to perform operations like collect using match cases. Moreover add operations that allows to write fluent code.
 
 ## Installation
 `npm i @quinck/collections`
@@ -11,7 +11,7 @@ The operations are inspired from the Scala collection framework and aims to prov
 `npm run test`
 
 ## Features
-In this section will be presented the implemented operations.
+In this section will be presented some of the implemented operations.
 
 | Collection | Operation | Description |
 | -------- | -------- | -------- |
@@ -21,6 +21,11 @@ In this section will be presented the implemented operations.
 | `Array` | `simpleGroupByToDictionary` | Simplified version of the `groupByToDictionary`, this operation will not allow to specify a mapper function for the values. In this case for each key will be generated and `Array` of values referring to that key. |
 | `Array` | `collect` |  It performs `Array.filter` and `Array.map` operations in a single operation (browsing the elements of the array once). It allow to specify a filter and a mapper function. The elements that match the filter will be kept and the others will be discarded. Moreover as in Scala also here is possible to specify the default case that will take care of the elements that didn't matched the filter. |
 | `Array` | `collect` | This operation tries to perform the `collect` operation of the Scala collection framework. As in Scala is possible to use the `match` construct, infact the `collect` allows to specify an ordered `Array` of `MatchCase`. Starting from the first to the last `MatchCase`, if an element of the `Array` satisfy the filter the relative mapper will be applied. As in Scala only the first successful case will be cosidered. Moreover as in the `collect` is possible to specify the default case specifying teh relative mapper. |
+| `Array` | `toSet` | Transform an `Array` into a `Set` with unique values.|
+| `Array` | `awaitAll` | Awaits all the promises elements of the `Array` to be fulfilled. |
+| `Array` | `tryToAwaitAll` | Awaits all the promises elements of the `Array` to be settled. If a `Promise` fulfills the item will be replaced with its awaited version, if a `Promise` rejects the item will be replaced with the error reported. |
+| `Array` | `awaitAllFulfilled` | Awaits all the promises elements of the `Array` to be settled, discarding elements that does not fulfills. |
+| `Array` | `awaitAllRejected` | Awaits all the promises elements of the `Array` to be settled, taking only the rejected. |
 | `Map` | `toArray` | `Map` objects in JavaScript (or Typescript) are not really 'array-friendly'. In fact in order to obtain an `Array` having a `Map` you have to get all the entries, using `map.entries()`, and then creating an `Array` (i.e. using `Array.from`). This way does not allow to have a fluent code, so in order to achieve this the additional method `Map.toArray` transform a `Map` in an `Array` where each element is a pair of a key and the relative value. Doing this way is possible to have a fluent code.|
 | `Map` | `keysArray` | Allow to get the keys of a `Map` in an `Array` in a fluent way.|
 | `Map` | `valuesArray` | Allow to get the values of a `Map` in an `Array` in a fluent way.|
