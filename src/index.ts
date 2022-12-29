@@ -1,3 +1,4 @@
+import './arrays/chunckify'
 import './arrays/collect'
 import './arrays/groupBy'
 import './arrays/promises'
