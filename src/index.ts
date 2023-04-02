@@ -1,5 +1,6 @@
 import './arrays/chunckify'
 import './arrays/collect'
+import './arrays/elements'
 import './arrays/groupBy'
 import './arrays/promises'
 import './arrays/toSet'
