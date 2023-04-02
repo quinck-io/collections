@@ -29,3 +29,27 @@ describe('Array.first', () => {
         )
     })
 })
+
+describe('Array.firstOrDefault', () => {
+    it('should retrieve the first element of an array', () => {
+        const array = Array.from({ length: 10 }, (_, i) => i)
+        const firstElement = array[0]
+
+        expect(array.firstOrDefualt()).to.be.equal(firstElement)
+    })
+
+    it('should not modify the array', () => {
+        const array = Array.from({ length: 10 }, (_, i) => i)
+        const initialArrayCopy = [...array]
+
+        array.firstOrDefualt()
+
+        expect(array).to.be.deep.equal(initialArrayCopy)
+    })
+
+    it('should return undefined if the array is empty', () => {
+        const emptyArray: unknown[] = []
+
+        expect(emptyArray.firstOrDefualt()).to.be.undefined
+    })
+})
