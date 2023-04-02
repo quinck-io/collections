@@ -53,3 +53,55 @@ describe('Array.firstOrDefault', () => {
         expect(emptyArray.firstOrDefualt()).to.be.undefined
     })
 })
+
+describe('Array.last', () => {
+    it('should retrieve the last element of an array', () => {
+        const array = Array.from({ length: 10 }, (_, i) => i)
+        const lastElement = array[array.length - 1]
+
+        const result = array.last()
+
+        expect(result).to.be.equal(lastElement)
+    })
+
+    it('should not modify the array', () => {
+        const array = Array.from({ length: 10 }, (_, i) => i)
+        const initialArrayCopy = [...array]
+
+        array.last()
+
+        expect(array).to.be.deep.equal(initialArrayCopy)
+    })
+
+    it(`should throw ${ArrayIndexOutOfBoundsError.name} error if the array is empty`, () => {
+        const emptyArray: unknown[] = []
+
+        expect(emptyArray.last.bind(emptyArray)).to.throw(
+            ArrayIndexOutOfBoundsError,
+        )
+    })
+})
+
+describe('Array.lastOrDefault', () => {
+    it('should retrieve the last element of an array', () => {
+        const array = Array.from({ length: 10 }, (_, i) => i)
+        const lastElement = array[array.length - 1]
+
+        expect(array.lastOrDefualt()).to.be.equal(lastElement)
+    })
+
+    it('should not modify the array', () => {
+        const array = Array.from({ length: 10 }, (_, i) => i)
+        const initialArrayCopy = [...array]
+
+        array.lastOrDefualt()
+
+        expect(array).to.be.deep.equal(initialArrayCopy)
+    })
+
+    it('should return undefined if the array is empty', () => {
+        const emptyArray: unknown[] = []
+
+        expect(emptyArray.lastOrDefualt()).to.be.undefined
+    })
+})

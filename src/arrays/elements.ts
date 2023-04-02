@@ -15,6 +15,17 @@ declare global {
          * @returns the first element of the array or undefined if the array is empty
          */
         firstOrDefualt(): T | undefined
+        /**
+         * Retrieve the last element of the array.
+         * @throws {ArrayIndexOutOfBoundsError}
+         * @returns the last element of the array
+         */
+        last(): T
+        /**
+         * Retrieve the last element of the array or undefined if the array is empty.
+         * @returns the last element of the array or undefined if the array is empty
+         */
+        lastOrDefualt(): T | undefined
     }
 }
 
@@ -30,4 +41,17 @@ Array.prototype.first = function <T>(): T {
 Array.prototype.firstOrDefualt = function <T>(): T {
     const _self = this as Array<T>
     return _self[ARRAY_FIRST_ELEMENT_INDEX]
+}
+
+Array.prototype.last = function <T>(): T {
+    const _self = this as Array<T>
+    const arrayLastElementIndex = _self.length - 1
+    const last = _self[arrayLastElementIndex]
+    if (last != undefined && last != null) return last
+    throw new ArrayIndexOutOfBoundsError(_self, arrayLastElementIndex)
+}
+
+Array.prototype.lastOrDefualt = function <T>(): T {
+    const _self = this as Array<T>
+    return _self[_self.length - 1]
 }
