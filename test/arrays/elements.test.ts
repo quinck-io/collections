@@ -7,16 +7,14 @@ describe('Array.first', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const firstElement = array[0]
 
-        const result = array.first()
-
-        expect(result).to.be.equal(firstElement)
+        expect(array.first).to.be.equal(firstElement)
     })
 
     it('should not modify the array', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const initialArrayCopy = [...array]
 
-        array.first()
+        array.first
 
         expect(array).to.be.deep.equal(initialArrayCopy)
     })
@@ -24,9 +22,7 @@ describe('Array.first', () => {
     it(`should throw ${ArrayIndexOutOfBoundsError.name} error if the array is empty`, () => {
         const emptyArray: unknown[] = []
 
-        expect(emptyArray.first.bind(emptyArray)).to.throw(
-            ArrayIndexOutOfBoundsError,
-        )
+        expect(() => emptyArray.first).to.throw(ArrayIndexOutOfBoundsError)
     })
 })
 
@@ -35,14 +31,14 @@ describe('Array.firstOrDefault', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const firstElement = array[0]
 
-        expect(array.firstOrDefualt()).to.be.equal(firstElement)
+        expect(array.firstOrDefualt).to.be.equal(firstElement)
     })
 
     it('should not modify the array', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const initialArrayCopy = [...array]
 
-        array.firstOrDefualt()
+        array.firstOrDefualt
 
         expect(array).to.be.deep.equal(initialArrayCopy)
     })
@@ -50,7 +46,7 @@ describe('Array.firstOrDefault', () => {
     it('should return undefined if the array is empty', () => {
         const emptyArray: unknown[] = []
 
-        expect(emptyArray.firstOrDefualt()).to.be.undefined
+        expect(emptyArray.firstOrDefualt).to.be.undefined
     })
 })
 
@@ -59,16 +55,14 @@ describe('Array.last', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const lastElement = array[array.length - 1]
 
-        const result = array.last()
-
-        expect(result).to.be.equal(lastElement)
+        expect(array.last).to.be.equal(lastElement)
     })
 
     it('should not modify the array', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const initialArrayCopy = [...array]
 
-        array.last()
+        array.last
 
         expect(array).to.be.deep.equal(initialArrayCopy)
     })
@@ -76,9 +70,7 @@ describe('Array.last', () => {
     it(`should throw ${ArrayIndexOutOfBoundsError.name} error if the array is empty`, () => {
         const emptyArray: unknown[] = []
 
-        expect(emptyArray.last.bind(emptyArray)).to.throw(
-            ArrayIndexOutOfBoundsError,
-        )
+        expect(() => emptyArray.last).to.throw(ArrayIndexOutOfBoundsError)
     })
 })
 
@@ -87,14 +79,14 @@ describe('Array.lastOrDefault', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const lastElement = array[array.length - 1]
 
-        expect(array.lastOrDefualt()).to.be.equal(lastElement)
+        expect(array.lastOrDefualt).to.be.equal(lastElement)
     })
 
     it('should not modify the array', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const initialArrayCopy = [...array]
 
-        array.lastOrDefualt()
+        array.lastOrDefualt
 
         expect(array).to.be.deep.equal(initialArrayCopy)
     })
@@ -102,6 +94,6 @@ describe('Array.lastOrDefault', () => {
     it('should return undefined if the array is empty', () => {
         const emptyArray: unknown[] = []
 
-        expect(emptyArray.lastOrDefualt()).to.be.undefined
+        expect(emptyArray.lastOrDefualt).to.be.undefined
     })
 })
