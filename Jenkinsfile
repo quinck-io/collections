@@ -6,7 +6,7 @@ pipeline {
   agent { label 'master' }
 
   tools {
-    nodejs "nodejs14.19"
+    nodejs "nodejs18.12.1"
   }
 
   options {
