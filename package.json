@@ -30,7 +30,6 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/Quinck/collections#readme",
   "devDependencies": {
-    "@tsconfig/node18": "^18.2.2",
     "@types/chai": "^4.3.3",
     "@types/chai-as-promised": "^7.1.5",
     "@types/mocha": "^10.0.0",
