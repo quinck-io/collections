@@ -1,5 +1,6 @@
 import './arrays/chunckify'
 import './arrays/collect'
+import './arrays/distinct'
 import './arrays/elements'
 import './arrays/empty'
 import './arrays/filter-if'
