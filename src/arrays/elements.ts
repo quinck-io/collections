@@ -31,35 +31,43 @@ declare global {
 
 const ARRAY_FIRST_ELEMENT_INDEX = 0
 
-Object.defineProperty(Array.prototype, 'first', {
-    get: function <T>(): T {
-        const _self = this as Array<T>
-        const first = _self[ARRAY_FIRST_ELEMENT_INDEX]
-        if (first != undefined && first != null) return first
-        throw new ArrayIndexOutOfBoundsError(_self, ARRAY_FIRST_ELEMENT_INDEX)
-    },
-})
+if (!Array.prototype.first) {
+    Object.defineProperty(Array.prototype, 'first', {
+        get: function <T>(): T {
+            const _self = this as Array<T>
+            const first = _self[ARRAY_FIRST_ELEMENT_INDEX]
+            if (first != undefined && first != null) return first
+            throw new ArrayIndexOutOfBoundsError(_self, ARRAY_FIRST_ELEMENT_INDEX)
+        },
+    })
+}
 
-Object.defineProperty(Array.prototype, 'firstOrDefualt', {
-    get: function <T>(): T {
-        const _self = this as Array<T>
-        return _self[ARRAY_FIRST_ELEMENT_INDEX]
-    },
-})
+if (!Array.prototype.firstOrDefualt) {
+    Object.defineProperty(Array.prototype, 'firstOrDefualt', {
+        get: function <T>(): T {
+            const _self = this as Array<T>
+            return _self[ARRAY_FIRST_ELEMENT_INDEX]
+        },
+    })
+}
 
-Object.defineProperty(Array.prototype, 'last', {
-    get: function <T>(): T {
-        const _self = this as Array<T>
-        const arrayLastElementIndex = _self.length - 1
-        const last = _self[arrayLastElementIndex]
-        if (last != undefined && last != null) return last
-        throw new ArrayIndexOutOfBoundsError(_self, arrayLastElementIndex)
-    },
-})
+if (!Array.prototype.last) {
+    Object.defineProperty(Array.prototype, 'last', {
+        get: function <T>(): T {
+            const _self = this as Array<T>
+            const arrayLastElementIndex = _self.length - 1
+            const last = _self[arrayLastElementIndex]
+            if (last != undefined && last != null) return last
+            throw new ArrayIndexOutOfBoundsError(_self, arrayLastElementIndex)
+        },
+    })
+}
 
-Object.defineProperty(Array.prototype, 'lastOrDefualt', {
-    get: function <T>(): T {
-        const _self = this as Array<T>
-        return _self[_self.length - 1]
-    },
-})
+if (!Array.prototype.lastOrDefualt) {
+    Object.defineProperty(Array.prototype, 'lastOrDefualt', {
+        get: function <T>(): T {
+            const _self = this as Array<T>
+            return _self[_self.length - 1]
+        },
+    })
+}

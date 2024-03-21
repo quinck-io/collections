@@ -1,4 +1,4 @@
-export { }
+export {}
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -13,9 +13,11 @@ declare global {
 
 const EMPTY_ARRAY_LENGTH = 0
 
-Object.defineProperty(Array.prototype, 'isEmpty', {
-    get: function <T>(): boolean {
-        const _self = this as Array<T>
-        return _self.length === EMPTY_ARRAY_LENGTH
-    },
-})
+if (!Array.prototype.isEmpty) {
+    Object.defineProperty(Array.prototype, 'isEmpty', {
+        get: function <T>(): boolean {
+            const _self = this as Array<T>
+            return _self.length === EMPTY_ARRAY_LENGTH
+        },
+    })
+}
