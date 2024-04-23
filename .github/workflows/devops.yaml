@@ -16,8 +16,7 @@ concurrency:
     cancel-in-progress: false
 
 env:
-    PROJECT_NAME: collections
-    SONAR_HOST_URL: https://sonarcloud.io
+    PROJECT_NAME: ${{ github.event.repository.name }}
 
 jobs:
     qa:
@@ -60,7 +59,7 @@ jobs:
               timeout-minutes: 5
               env:
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-                  SONAR_HOST_URL: ${{ env.SONAR_HOST_URL }}
+                  SONAR_HOST_URL: https://sonarcloud.io
 
             - name: Notify Discord
               if: always()
