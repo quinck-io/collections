@@ -145,6 +145,7 @@ const status = process.env.INPUT_STATUS
 const projectName = process.env.INPUT_PROJECTNAME
 const testResultsUrl = process.env.INPUT_TESTRESULTSURL
 const sonarUrl = process.env.INPUT_SONARURL
+const sonarQualityGateStatus = process.env.INPUT_SONARQUALITYGATESTATUS
 const eventPath = process.env.GITHUB_EVENT_PATH
 
 required({ webhookUrl })
@@ -156,7 +157,16 @@ if (eventPath) {
     const refName = process.env.GITHUB_REF_NAME
     const event = JSON.parse(fs.readFileSync(eventPath, 'utf8'))
 
-    sendDiscordWebhook({ webhookUrl, status, projectName, refName, event, testResultsUrl, sonarUrl })
+    sendDiscordWebhook({
+        webhookUrl,
+        status,
+        projectName,
+        refName,
+        event,
+        testResultsUrl,
+        sonarUrl,
+        sonarQualityGateStatus,
+    })
 } else {
     console.log('GITHUB_EVENT_PATH environment variable is not set.')
 }
