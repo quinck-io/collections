@@ -65,10 +65,20 @@ const getColor = status => {
  * refName: string,
  * testResultsUrl: string | undefined,
  * event: { head_commit: { author: { name: string }, timestamp: string, message: string, id: string } },
- * sonarUrl: string | undefined
+ * sonarUrl: string | undefined,
+ * sonarQualityGateStatus: string | undefined
  * }} param0
  */
-async function sendDiscordWebhook({ webhookUrl, status, projectName, refName, event, testResultsUrl, sonarUrl }) {
+async function sendDiscordWebhook({
+    webhookUrl,
+    status,
+    projectName,
+    refName,
+    event,
+    testResultsUrl,
+    sonarUrl,
+    sonarQualityGateStatus,
+}) {
     const { statusIcon, statusMessage } =
         status === 'success'
             ? getStatusInfo(successIcons, successMessages(event.head_commit.author.name))
@@ -77,6 +87,7 @@ async function sendDiscordWebhook({ webhookUrl, status, projectName, refName, ev
     const testMessage = testResultsUrl ? `Test Results: [View Results](${testResultsUrl})` : ''
 
     const sonarMessage = sonarUrl ? `SonarCloud: [View Report](${sonarUrl})` : ''
+    const sonarStatus = sonarQualityGateStatus ? `Quality Gate: *${sonarQualityGateStatus}*` : ''
 
     const embedDescription = `
 ${statusIcon} Status: *${status.toUpperCase()}*
@@ -85,6 +96,7 @@ ${process.env.GITHUB_WORKFLOW}: ${process.env.GITHUB_JOB}
 ${testMessage}
 
 ${sonarMessage}
+${sonarStatus}
 
 ${statusMessage}
 `

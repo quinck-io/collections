@@ -17,6 +17,7 @@ concurrency:
 
 env:
     PROJECT_NAME: collections
+    SONAR_HOST_URL: https://sonarcloud.io
 
 jobs:
     qa:
@@ -37,12 +38,6 @@ jobs:
             - name: Test
               run: npm run test:jsonReporter
 
-            - name: SonarCloud Scan
-              uses: SonarSource/sonarcloud-github-action@master
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
-                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
             - uses: dorny/test-reporter@v1
               if: always()
               id: testsreport
@@ -50,6 +45,22 @@ jobs:
                   name: Unit Tests # Name of the check run which will be created
                   path: 'test-results.json' # Path to test results (inside artifact .zip)
                   reporter: mocha-json # Format of test results
+
+            - name: SonarCloud Scan
+              uses: SonarSource/sonarcloud-github-action@master
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+            # Check the Quality Gate status.
+            - name: SonarQube Quality Gate check
+              id: sonarqube-quality-gate-check
+              uses: sonarsource/sonarqube-quality-gate-action@master
+              # Force to fail step after specific time.
+              timeout-minutes: 5
+              env:
+                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+                  SONAR_HOST_URL: ${{ env.SONAR_HOST_URL }}
 
             - name: Notify Discord
               if: always()
@@ -60,6 +71,7 @@ jobs:
                   projectName: ${{ env.PROJECT_NAME }}
                   testResultsUrl: ${{ steps.testsreport.outputs.url_html }}
                   sonarUrl: https://sonarcloud.io/summary/new_code?id=quinck-io_collections&branch=${{ github.ref_name }}
+                  sonarQualityGateStatus: ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}
 
     publish:
         runs-on: ubuntu-latest

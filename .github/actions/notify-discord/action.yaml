@@ -18,6 +18,9 @@ inputs:
     sonarUrl:
         description: 'URL to SonarCloud'
         required: false
+    sonarQualityGateStatus:
+        description: 'Status of the SonarCloud Quality Gate'
+        required: false
 
 runs:
     using: 'node20'
