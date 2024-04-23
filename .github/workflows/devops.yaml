@@ -33,8 +33,8 @@ jobs:
               run: npm run test:jsonReporter
 
             - uses: dorny/test-reporter@v1
+              if: always()
               with:
-                  artifact: test-results # artifact name
                   name: Unit Tests # Name of the check run which will be created
                   path: 'test-results.json' # Path to test results (inside artifact .zip)
                   reporter: mocha-json # Format of test results
