@@ -39,6 +39,7 @@ jobs:
 
             - uses: dorny/test-reporter@v1
               if: always()
+              id: testsreport
               with:
                   name: Unit Tests # Name of the check run which will be created
                   path: 'test-results.json' # Path to test results (inside artifact .zip)
@@ -51,6 +52,7 @@ jobs:
                   webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
                   status: ${{ job.status }}
                   projectName: ${{ env.PROJECT_NAME }}
+                  testResultsUrl: ${{ steps.testsreport.outputs.url }}
 
     publish:
         runs-on: ubuntu-latest
