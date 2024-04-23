@@ -32,7 +32,14 @@ jobs:
               run: npm run lint
 
             - name: Test
-              run: npm run test
+              run: test:jsonReporter
+
+            - uses: dorny/test-reporter@v1
+              with:
+                  artifact: test-results # artifact name
+                  name: Unit Tests # Name of the check run which will be created
+                  path: 'test-results.json' # Path to test results (inside artifact .zip)
+                  reporter: mocha-json # Format of test results
 
             - name: Notify Discord
               if: always()
