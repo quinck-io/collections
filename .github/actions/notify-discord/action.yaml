@@ -15,6 +15,9 @@ inputs:
     testResultsUrl:
         description: 'URL to test results'
         required: false
+    sonarUrl:
+        description: 'URL to SonarCloud'
+        required: false
 
 runs:
     using: 'node20'

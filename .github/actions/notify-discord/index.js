@@ -64,10 +64,11 @@ const getColor = status => {
  * projectName: string,
  * refName: string,
  * testResultsUrl: string | undefined,
- * event: { head_commit: { author: { name: string }, timestamp: string, message: string, id: string } }
+ * event: { head_commit: { author: { name: string }, timestamp: string, message: string, id: string } },
+ * sonarUrl: string | undefined
  * }} param0
  */
-async function sendDiscordWebhook({ webhookUrl, status, projectName, refName, event, testResultsUrl }) {
+async function sendDiscordWebhook({ webhookUrl, status, projectName, refName, event, testResultsUrl, sonarUrl }) {
     const { statusIcon, statusMessage } =
         status === 'success'
             ? getStatusInfo(successIcons, successMessages(event.head_commit.author.name))
@@ -75,12 +76,14 @@ async function sendDiscordWebhook({ webhookUrl, status, projectName, refName, ev
 
     const testMessage = testResultsUrl ? `Test Results: [View Results](${testResultsUrl})` : ''
 
+    const sonarMessage = sonarUrl ? `SonarCloud: [View Report](${sonarUrl})` : ''
+
     const embedDescription = `
 ${statusIcon} Status: *${status.toUpperCase()}*
 
 ${testMessage}
 
-SonarResult: TBD
+${sonarMessage}
 
 ${statusMessage}
 `
@@ -128,6 +131,7 @@ const webhookUrl = process.env.INPUT_WEBHOOKURL
 const status = process.env.INPUT_STATUS
 const projectName = process.env.INPUT_PROJECTNAME
 const testResultsUrl = process.env.INPUT_TESTRESULTSURL
+const sonarUrl = process.env.INPUT_SONARURL
 const eventPath = process.env.GITHUB_EVENT_PATH
 
 required({ webhookUrl })
@@ -139,7 +143,7 @@ if (eventPath) {
     const refName = process.env.GITHUB_REF_NAME
     const event = JSON.parse(fs.readFileSync(eventPath, 'utf8'))
 
-    sendDiscordWebhook({ webhookUrl, status, projectName, refName, event, testResultsUrl })
+    sendDiscordWebhook({ webhookUrl, status, projectName, refName, event, testResultsUrl, sonarUrl })
 } else {
     console.log('GITHUB_EVENT_PATH environment variable is not set.')
 }
