@@ -15,9 +15,7 @@ env:
 
 jobs:
     qa:
-        runs-on: self-hosted-x64-power
-        container:
-            image: ubuntu:latest
+        runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
 
@@ -50,9 +48,7 @@ jobs:
                   projectName: ${{ env.PROJECT_NAME }}
 
     publish:
-        runs-on: self-hosted-x64-power
-        container:
-            image: ubuntu:latest
+        runs-on: ubuntu-latest
         needs: qa
         if: ${{ github.ref_name == 'master' }}
         steps:
