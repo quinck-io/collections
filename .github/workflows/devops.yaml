@@ -30,7 +30,7 @@ jobs:
               run: npm run lint
 
             - name: Test
-              run: test:jsonReporter
+              run: npm run test:jsonReporter
 
             - uses: dorny/test-reporter@v1
               with:
