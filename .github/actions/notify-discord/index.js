@@ -80,6 +80,7 @@ async function sendDiscordWebhook({ webhookUrl, status, projectName, refName, ev
 
     const embedDescription = `
 ${statusIcon} Status: *${status.toUpperCase()}*
+${process.env.GITHUB_WORKFLOW}: ${process.env.GITHUB_JOB}
 
 ${testMessage}
 
