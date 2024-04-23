@@ -43,7 +43,7 @@ if (!Array.prototype.first) {
 }
 
 if (!Array.prototype.firstOrDefault) {
-    Object.defineProperty(Array.prototype, 'firstOrDefualt', {
+    Object.defineProperty(Array.prototype, 'firstOrDefault', {
         get: function <T>(): T {
             const _self = this as Array<T>
             return _self[ARRAY_FIRST_ELEMENT_INDEX]
@@ -64,7 +64,7 @@ if (!Array.prototype.last) {
 }
 
 if (!Array.prototype.lastOrDefault) {
-    Object.defineProperty(Array.prototype, 'lastOrDefualt', {
+    Object.defineProperty(Array.prototype, 'lastOrDefault', {
         get: function <T>(): T {
             const _self = this as Array<T>
             return _self[_self.length - 1]
