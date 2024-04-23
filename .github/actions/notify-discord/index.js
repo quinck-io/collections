@@ -49,6 +49,8 @@ async function sendDiscordWebhook(webhookUrl, status, projectName, color, refNam
     const embedDescription = `
 ${statusIcon} Status: *${status.toUpperCase()}*
 
+Test Results: TBD
+
 SonarResult: TBD
 
 ${statusMessage}
