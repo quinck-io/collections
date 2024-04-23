@@ -52,7 +52,7 @@ jobs:
                   webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
                   status: ${{ job.status }}
                   projectName: ${{ env.PROJECT_NAME }}
-                  testResultsUrl: ${{ steps.testsreport.outputs.url }}
+                  testResultsUrl: ${{ steps.testsreport.outputs.url_html }}
 
     publish:
         runs-on: ubuntu-latest
