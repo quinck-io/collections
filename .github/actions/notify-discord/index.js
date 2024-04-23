@@ -40,16 +40,45 @@ const getStatusInfo = (icons, messages) => ({
     statusMessage: messages[Math.floor(Math.random() * messages.length)],
 })
 
-async function sendDiscordWebhook(webhookUrl, status, projectName, color, refName, event) {
+/**
+ * Get the color for the embed
+ * @param {string} status
+ * @returns {number}
+ */
+const getColor = status => {
+    switch (status) {
+        case 'success':
+            return 3066993 // green
+        case 'failure':
+            return 15158332 // red
+        default:
+            return 0 // white
+    }
+}
+
+/**
+ * Send a Discord webhook
+ * @param {{
+ * webhookUrl: string,
+ * status: string,
+ * projectName: string,
+ * refName: string,
+ * testResultsUrl: string | undefined,
+ * event: { head_commit: { author: { name: string }, timestamp: string, message: string, id: string } }
+ * }} param0
+ */
+async function sendDiscordWebhook({ webhookUrl, status, projectName, refName, event, testResultsUrl }) {
     const { statusIcon, statusMessage } =
         status === 'success'
             ? getStatusInfo(successIcons, successMessages(event.head_commit.author.name))
             : getStatusInfo(failureIcons, failureMessages(event.head_commit.author.name))
 
+    const testMessage = testResultsUrl ? `Test Results: [View Results](${testResultsUrl})` : ''
+
     const embedDescription = `
 ${statusIcon} Status: *${status.toUpperCase()}*
 
-Test Results: TBD
+${testMessage}
 
 SonarResult: TBD
 
@@ -69,9 +98,8 @@ Hash: ${event.head_commit.id.slice(0, 7)}
         footer: {
             text: footerText,
         },
+        color: getColor(status),
     }
-
-    if (color) embed.color = parseInt(color)
 
     const body = JSON.stringify({
         username: 'GitHub Actions',
@@ -99,7 +127,7 @@ const required = obj => {
 const webhookUrl = process.env.INPUT_WEBHOOKURL
 const status = process.env.INPUT_STATUS
 const projectName = process.env.INPUT_PROJECTNAME
-const color = process.env.INPUT_COLOR
+const testResultsUrl = process.env.INPUT_TESTRESULTSURL
 const eventPath = process.env.GITHUB_EVENT_PATH
 
 required({ webhookUrl })
@@ -111,7 +139,7 @@ if (eventPath) {
     const refName = process.env.GITHUB_REF_NAME
     const event = JSON.parse(fs.readFileSync(eventPath, 'utf8'))
 
-    sendDiscordWebhook(webhookUrl, status, projectName, color, refName, event)
+    sendDiscordWebhook({ webhookUrl, status, projectName, refName, event, testResultsUrl })
 } else {
     console.log('GITHUB_EVENT_PATH environment variable is not set.')
 }
