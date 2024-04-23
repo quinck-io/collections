@@ -14,9 +14,7 @@ describe('Tests for Array.awaitAll', () => {
             const elementsPromisified = elements.map(e => Promise.resolve(e))
             const results = elementsPromisified.awaitAll()
 
-            expect(results).to.be.eventually.fulfilled.and.be.deep.equal(
-                elements,
-            )
+            expect(results).to.be.eventually.fulfilled.and.be.deep.equal(elements)
         })
 
         it('should rejects if any promise rejects and throw the error thrown by the rejected promise', () => {
@@ -34,9 +32,7 @@ describe('Tests for Array.awaitAll', () => {
             const elements = ['a', 'b']
             const results = elements.awaitAll()
 
-            expect(results).to.be.eventually.fulfilled.and.be.deep.equal(
-                elements,
-            )
+            expect(results).to.be.eventually.fulfilled.and.be.deep.equal(elements)
         })
     })
 })
@@ -63,9 +59,7 @@ describe('Tests for Array.tryToAwaitAll', () => {
             const elements = ['a', 'b']
             const results = elements.tryToAwaitAll()
 
-            expect(results).to.be.eventually.fulfilled.and.be.deep.equal(
-                elements,
-            )
+            expect(results).to.be.eventually.fulfilled.and.be.deep.equal(elements)
         })
     })
 })
@@ -87,9 +81,7 @@ describe('Tests for Array.awaitAllFulfilled', () => {
             const elements = ['a', 'b']
             const results = elements.awaitAllFulfilled()
 
-            expect(results).to.be.eventually.fulfilled.and.be.deep.equal(
-                elements,
-            )
+            expect(results).to.be.eventually.fulfilled.and.be.deep.equal(elements)
         })
     })
 })
@@ -111,9 +103,7 @@ describe('Tests for Array.awaitAllRejected', () => {
             const elements = ['a', 'b']
             const results = elements.awaitAllRejected()
 
-            expect(results).to.be.eventually.fulfilled.and.be.deep.equal(
-                elements,
-            )
+            expect(results).to.be.eventually.fulfilled.and.be.deep.equal(elements)
         })
     })
 })
