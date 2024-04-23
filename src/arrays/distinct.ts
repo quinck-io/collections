@@ -4,7 +4,16 @@ import './groupBy'
 
 declare global {
     interface Array<T> {
+        /**
+         * Returns a new Array containing only the distinct elements of the original Array.
+         * @returns a new Array containing only the distinct elements of the original Array
+         */
         distinct(): Array<T>
+        /**
+         * Returns a new Array containing only the distinct elements of the original Array.
+         * @param f A function that receives an element of the Array and returns a value used to compare the elements
+         * @returns a new Array containing only the distinct elements of the original Array
+         */
         distinctBy<S>(f: (value: T) => S): Array<T>
     }
 }

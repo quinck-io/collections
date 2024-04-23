@@ -31,14 +31,14 @@ describe('Array.firstOrDefault', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const firstElement = array[0]
 
-        expect(array.firstOrDefualt).to.be.equal(firstElement)
+        expect(array.firstOrDefault).to.be.equal(firstElement)
     })
 
     it('should not modify the array', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const initialArrayCopy = [...array]
 
-        array.firstOrDefualt
+        array.firstOrDefault
 
         expect(array).to.be.deep.equal(initialArrayCopy)
     })
@@ -46,7 +46,7 @@ describe('Array.firstOrDefault', () => {
     it('should return undefined if the array is empty', () => {
         const emptyArray: unknown[] = []
 
-        expect(emptyArray.firstOrDefualt).to.be.undefined
+        expect(emptyArray.firstOrDefault).to.be.undefined
     })
 })
 
@@ -79,14 +79,14 @@ describe('Array.lastOrDefault', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const lastElement = array[array.length - 1]
 
-        expect(array.lastOrDefualt).to.be.equal(lastElement)
+        expect(array.lastOrDefault).to.be.equal(lastElement)
     })
 
     it('should not modify the array', () => {
         const array = Array.from({ length: 10 }, (_, i) => i)
         const initialArrayCopy = [...array]
 
-        array.lastOrDefualt
+        array.lastOrDefault
 
         expect(array).to.be.deep.equal(initialArrayCopy)
     })
@@ -94,6 +94,6 @@ describe('Array.lastOrDefault', () => {
     it('should return undefined if the array is empty', () => {
         const emptyArray: unknown[] = []
 
-        expect(emptyArray.lastOrDefualt).to.be.undefined
+        expect(emptyArray.lastOrDefault).to.be.undefined
     })
 })

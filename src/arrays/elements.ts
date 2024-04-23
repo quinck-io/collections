@@ -14,7 +14,7 @@ declare global {
          * Retrieve the first element of the array or undefined if the array is empty.
          * @returns the first element of the array or undefined if the array is empty
          */
-        firstOrDefualt: T | undefined
+        firstOrDefault: T | undefined
         /**
          * Retrieve the last element of the array.
          * @throws {ArrayIndexOutOfBoundsError}
@@ -25,7 +25,7 @@ declare global {
          * Retrieve the last element of the array or undefined if the array is empty.
          * @returns the last element of the array or undefined if the array is empty
          */
-        lastOrDefualt: T | undefined
+        lastOrDefault: T | undefined
     }
 }
 
@@ -42,8 +42,8 @@ if (!Array.prototype.first) {
     })
 }
 
-if (!Array.prototype.firstOrDefualt) {
-    Object.defineProperty(Array.prototype, 'firstOrDefualt', {
+if (!Array.prototype.firstOrDefault) {
+    Object.defineProperty(Array.prototype, 'firstOrDefault', {
         get: function <T>(): T {
             const _self = this as Array<T>
             return _self[ARRAY_FIRST_ELEMENT_INDEX]
@@ -63,8 +63,8 @@ if (!Array.prototype.last) {
     })
 }
 
-if (!Array.prototype.lastOrDefualt) {
-    Object.defineProperty(Array.prototype, 'lastOrDefualt', {
+if (!Array.prototype.lastOrDefault) {
+    Object.defineProperty(Array.prototype, 'lastOrDefault', {
         get: function <T>(): T {
             const _self = this as Array<T>
             return _self[_self.length - 1]
