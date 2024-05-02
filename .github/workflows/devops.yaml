@@ -63,11 +63,12 @@ jobs:
 
             - name: Notify Discord
               if: always()
-              uses: quinck-io/actions-notify-discord@v2.0.1
+              uses: quinck-io/actions-notify-discord@v2.0.2
               with:
                   webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
                   status: ${{ job.status }}
                   projectName: ${{ env.PROJECT_NAME }}
+                  testResultsUrl: ${{ steps.testsreport.outputs.url_html }}
                   sonarProjectKey: quinck-io_collections
                   sonarQualityGateStatus: ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}
 
@@ -105,7 +106,7 @@ jobs:
 
             - name: Notify Discord
               if: always()
-              uses: quinck-io/actions-notify-discord@v2.0.1
+              uses: quinck-io/actions-notify-discord@v2.0.2
               with:
                   webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
                   status: ${{ job.status }}
